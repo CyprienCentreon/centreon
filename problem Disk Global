@@ -1,0 +1,25 @@
+Hello
+
+We are having issues on the control "Disk Global" deployed on central with the plugin
+
+$CENTREONPLUGINS$/centreon_linux_snmp.pl --plugin=os::linux::snmp::plugin --mode=storage
+--hostname=$HOSTADDRESS$ --snmp-version='$_HOSTSNMPVERSION$' --snmp-community='$_HOSTSNMPCOMMUNITY$' $_HOSTSNMPEXTRAOPTIONS$ 
+--storage='$_SERVICEFILTER$' --name --regexp --display-transform-src='$_SERVICETRANSFORMSRC$' 
+--display-transform-dst='$_SERVICETRANSFORMDST$' --warning='$_SERVICEWARNING$' --critical='$_SERVICECRITICAL$' $_SERVICEEXTRAOPTIONS$
+
+your update is imposing the use of --warning-usage='' and --critical-usage'' instead of --warning='' and --critical=''
+
+[Central:centreon] /var/spool/centreon> /usr/lib/centreon/plugins/centreon_linux_snmp.pl --plugin=os::linux::snmp::plugin 
+--mode=storage --hostname=127.0.0.1 --snmp-version='2c' --snmp-community='public' --storage='.*' 
+--name --regexp --display-transform-src='' --display-transform-dst=''  --warning-usage='50' --critical-usage='100'
+
+OK: All storages are ok | 'used_/'=2654060544B;0:21070774272;0:42141548544;0;42141548544 
+'used_/dev/shm'=0B;0:1004652544;0:2009305088;0;2009305088 'used_/backup'=1272582144B;0:5217349632;0:10434699264;0;10434699264 
+'used_/boot'=117163008B;0:249677824;0:499355648;0;499355648 'used_/expl'=1343488B;0:511651840;0:1023303680;0;1023303680 
+'used_/maint'=10477568B;0:2575106048;0:5150212096;0;5150212096 'used_/var/lib'=3209027584B;0:15786309632;0:31572619264;0;31572619264
+
+Have you encountered this situation ? Which solution could you suggest to make it work ?
+
+Thank you
+
+Cyprien
